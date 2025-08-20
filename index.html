@@ -16,6 +16,7 @@
             --success: #4cc9f0;
             --danger: #f72585;
             --warning: #f8961e;
+            --purple: #7209b7;
         }
 
         * {
@@ -195,28 +196,94 @@
             border-radius: 16px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            text-align: center;
+            margin-bottom: auto;
         }
 
         .health-section h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .health-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--success), var(--accent));
+            border-radius: 3px;
+        }
+
+        .health-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .health-item {
+            display: flex;
+            flex-direction: column;
+            background: rgba(248, 249, 250, 0.8);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--success);
+        }
+
+        .health-item:nth-child(2) {
+            border-left-color: var(--danger);
+        }
+
+        .health-item:nth-child(3) {
+            border-left-color: var(--warning);
+        }
+
+        .health-item:nth-child(4) {
+            border-left-color: var(--purple);
+        }
+
+        .health-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .health-title {
+            font-weight: 600;
             margin-bottom: 1rem;
             color: var(--dark);
         }
 
-        .coming-soon {
+        .health-btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent), var(--success));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
             font-size: 0.9rem;
             font-weight: 500;
-            margin-top: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: auto;
+            text-decoration: none;
+        }
+
+        .health-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
         }
 
         @media (max-width: 768px) {
-            .calculator-grid {
+
+            .calculator-grid,
+            .health-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -258,7 +325,7 @@
                 <i class="fas fa-pills"></i>
             </div>
             <h1>MediCalc</h1>
-            <p class="subtitle">Kalkulator dosis obat akurat</p>
+            <p class="subtitle">Smart Medical Calculator for Better Healthcare</p>
         </header>
 
         <div class="calculator-grid">
@@ -279,7 +346,6 @@
                             <i class="fas fa-chevron-right"></i>
                         </li>
                     </a>
-
                 </ul>
             </div>
 
@@ -300,7 +366,6 @@
                             <i class="fas fa-chevron-right"></i>
                         </li>
                     </a>
-
                 </ul>
             </div>
 
@@ -310,8 +375,7 @@
                 </div>
                 <ul class="formula-list">
                     <a href="young-formula.html">
-                    <li class="formula-item">
-
+                        <li class="formula-item">
                             <div class="formula-icon" style="color: #4cc9f0;">
                                 <i class="fas fa-child"></i>
                             </div>
@@ -322,7 +386,6 @@
                             <i class="fas fa-chevron-right"></i>
                         </li>
                     </a>
-
                 </ul>
             </div>
 
@@ -369,8 +432,27 @@
 
         <div class="health-section">
             <h2>Kalkulator Kesehatan</h2>
-            <p>Fitur kalkulator kesehatan lainnya akan segera hadir</p>
-            <span class="coming-soon">Coming Soon</span>
+            <div class="health-grid">
+                <div class="health-item">
+                    <h3 class="health-title">Perhitungan BMI</h3>
+                    <a href="bmi.html" class="health-btn">Hitung</a>
+                </div>
+
+                <div class="health-item">
+                    <h3 class="health-title">Perhitungan Masa Subur</h3>
+                    <a href="fertile-time.html" class="health-btn">Hitung</a>
+                </div>
+
+                <div class="health-item">
+                    <h3 class="health-title">Perhitungan Kliren Kreatinin</h3>
+                    <a href="klirens-kreatinin.html" class="health-btn">Hitung</a>
+                </div>
+
+                <div class="health-item">
+                    <h3 class="health-title">Perhitungan Kalori</h3>
+                    <a href="calories.html" class="health-btn">Hitung</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

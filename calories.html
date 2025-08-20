@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCalc - Kalkulator Kalori</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #7209b7;
+            --secondary: #560bad;
+            --accent: #7209b7;
+            --dark: #1b263b;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --danger: #f72585;
+            --warning: #f8961e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #faf5ff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        
+        .breadcrumb .separator {
+            color: #adb5bd;
+        }
+        
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .page-title i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .calculator-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(114, 9, 183, 0.1);
+        }
+        
+        .gender-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .gender-option {
+            flex: 1;
+        }
+        
+        .gender-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            background: white;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gender-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(114, 9, 183, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .result-container {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: rgba(114, 9, 183, 0.05);
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .result-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .result-info {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .info-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .info-text {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .formula-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: rgba(248, 249, 250, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .formula-info-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .formula-info-text {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .calculator-card {
+                padding: 1.5rem;
+            }
+            
+            .page-title {
+                font-size: 1.3rem;
+            }
+            
+            .gender-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i> Beranda</a>
+            <span class="separator">|</span>
+            <span>Kalkulator Kalori</span>
+        </div>
+        
+        <div class="page-header">
+            <h1 class="page-title">
+                <i class="fas fa-fire-alt"></i>
+                <span>Kalkulator Kalori</span>
+            </h1>
+        </div>
+        
+        <div class="calculator-card">
+            <h2 class="card-title">Kalkulator BMR</h2>
+            
+            <form id="bmrFormula">
+                <div class="form-group">
+                    <label class="form-label">Jenis Kelamin:</label>
+                    <div class="gender-group">
+                        <div class="gender-option">
+                            <button type="button" class="gender-btn active" data-gender="male">Laki-laki</button>
+                        </div>
+                        <div class="gender-option">
+                            <button type="button" class="gender-btn" data-gender="female">Perempuan</button>
+                        </div>
+                    </div>
+                    <input type="hidden" id="gender" value="male">
+                </div>
+                
+                <div class="form-group">
+                    <label for="age" class="form-label">Usia (tahun):</label>
+                    <input type="number" id="age" class="form-control" placeholder="Masukkan usia..." min="0" max="120" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="weight" class="form-label">Berat Badan (kg):</label>
+                    <input type="number" id="weight" class="form-control" placeholder="Masukkan berat badan..." step="0.1" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="height" class="form-label">Tinggi Badan (cm):</label>
+                    <input type="number" id="height" class="form-control" placeholder="Masukkan tinggi badan..." min="0" required>
+                </div>
+                
+                <button type="submit" class="btn">
+                    <i class="fas fa-calculator"></i> Hitung
+                </button>
+            </form>
+            
+            <div class="result-container" id="result">
+                <div class="result-title">Hasil BMR:</div>
+                <div class="result-value" id="bmrValue">0 kkal/hari</div>
+                
+                <div class="result-info">
+                    <div class="info-title">Tentang BMR:</div>
+                    <div class="info-text">
+                        BMR (Basal Metabolic Rate) adalah jumlah kalori yang dibutuhkan tubuh 
+                        untuk melakukan fungsi dasar seperti bernapas, sirkulasi darah, dan 
+                        menjaga suhu tubuh saat istirahat total.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="formula-info">
+                <div class="formula-info-title">Rumus Harris-Benedict</div>
+                <div class="formula-info-text">
+                    BMR dihitung menggunakan rumus Harris-Benedict:<br>
+                    <strong>Laki-laki:</strong> 66 + (13.75 × berat) + (5.003 × tinggi) - (6.75 × usia)<br>
+                    <strong>Perempuan:</strong> 655 + (9.563 × berat) + (1.850 × tinggi) - (4.676 × usia)<br>
+                    Rumus ini merupakan salah satu metode paling awal dan masih banyak digunakan 
+                    untuk menghitung kebutuhan kalori basal.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gender selection
+        const genderBtns = document.querySelectorAll('.gender-btn');
+        const genderInput = document.getElementById('gender');
+        
+        genderBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                genderBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                genderInput.value = this.dataset.gender;
+            });
+        });
+        
+        // BMR calculation using Harris-Benedict formula
+        document.getElementById('bmrFormula').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const gender = document.getElementById('gender').value;
+            const age = parseInt(document.getElementById('age').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            
+            if (age && weight && height) {
+                let bmr = 0;
+                
+                // Harris-Benedict formula
+                if (gender === "male") {
+                    bmr = 66 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
+                } else if (gender === "female") {
+                    bmr = 655 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
+                }
+                
+                document.getElementById('bmrValue').textContent = bmr.toFixed(2) + ' kkal/hari';
+                document.getElementById('result').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
