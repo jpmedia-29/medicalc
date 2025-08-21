@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,32 +16,39 @@
             --success: #4cc9f0;
             --warning: #f8961e;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
         }
-        
+
         body {
             background-color: #fff5f9;
             color: var(--dark);
             line-height: 1.6;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
             animation: fadeIn 0.6s ease-out;
         }
-        
+
         .breadcrumb {
             display: flex;
             align-items: center;
@@ -49,29 +57,29 @@
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
-        
+
         .breadcrumb a {
             color: var(--primary);
             text-decoration: none;
             transition: all 0.2s ease;
         }
-        
+
         .breadcrumb a:hover {
             color: var(--secondary);
             text-decoration: underline;
         }
-        
+
         .breadcrumb .separator {
             color: #adb5bd;
         }
-        
+
         .page-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 2rem;
         }
-        
+
         .page-title {
             font-size: 1.8rem;
             font-weight: 700;
@@ -80,12 +88,12 @@
             align-items: center;
             gap: 1rem;
         }
-        
+
         .page-title i {
             color: var(--primary);
             font-size: 1.5rem;
         }
-        
+
         .calculator-card {
             background: white;
             border-radius: 16px;
@@ -95,7 +103,7 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 2rem;
         }
-        
+
         .card-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -105,7 +113,7 @@
             position: relative;
             padding-bottom: 1rem;
         }
-        
+
         .card-title::after {
             content: '';
             position: absolute;
@@ -117,18 +125,18 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 3px;
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--dark);
         }
-        
+
         .form-control {
             width: 100%;
             padding: 0.8rem 1rem;
@@ -137,27 +145,27 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
-        
+
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(247, 37, 133, 0.1);
         }
-        
+
         .range-container {
             display: flex;
             align-items: center;
             gap: 1rem;
             margin-top: 0.5rem;
         }
-        
+
         .range-value {
             min-width: 40px;
             text-align: center;
             font-weight: 600;
             color: var(--primary);
         }
-        
+
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -171,16 +179,16 @@
             transition: all 0.3s ease;
             width: 100%;
         }
-        
+
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
         }
-        
+
         .btn:active {
             transform: translateY(0);
         }
-        
+
         .result-container {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -188,57 +196,59 @@
             border-radius: 8px;
             display: none;
         }
-        
+
         .result-title {
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 1rem;
             text-align: center;
         }
-        
+
         .result-content {
             background: white;
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-        
+
         .recommendation {
             line-height: 1.8;
             color: var(--dark);
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 padding: 1.5rem;
             }
-            
+
             .page-title {
                 font-size: 1.5rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .container {
                 padding: 1rem;
             }
-            
+
             .calculator-card {
                 padding: 1.5rem;
             }
-            
+
             .page-title {
                 font-size: 1.3rem;
             }
-            
+
             .range-container {
                 flex-direction: column;
                 align-items: stretch;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <div class="breadcrumb">
@@ -246,50 +256,54 @@
             <span class="separator">|</span>
             <span>Masa Subur</span>
         </div>
-        
+
         <div class="page-header">
             <h1 class="page-title">
                 <i class="fas fa-calendar-alt"></i>
                 <span>Masa Subur</span>
             </h1>
         </div>
-        
+
         <div class="calculator-card">
             <h2 class="card-title">Kalkulator Masa Subur</h2>
-            
+
             <form id="fertilityFormula">
                 <div class="form-group">
                     <label for="lastPeriod" class="form-label">Hari Pertama Haid Terakhir:</label>
                     <input type="date" id="lastPeriod" class="form-control" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="cycleLength" class="form-label">Panjang Siklus Haid (Hari):</label>
-                    <input type="range" id="cycleLength" class="form-control" min="20" max="45" value="28" step="1" required>
+                    <input type="range" id="cycleLength" class="form-control" min="20" max="45" value="28" step="1"
+                        required>
                     <div class="range-container">
-                        
-                        <input type="hidden" id="cycleLengthInput" value="28" min="20" max="45" class="form-control" style="width: 80px;">
-                    
+
+                        <input type="hidden" id="cycleLengthInput" value="28" min="20" max="45" class="form-control"
+                            style="width: 80px;">
+
                         <span class="range-value" id="cycleLengthValue">28</span>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="periodLength" class="form-label">Lama Haid (Hari):</label>
-                    <input type="range" id="periodLength" class="form-control" min="3" max="10" value="5" step="1" required>
+                    <input type="range" id="periodLength" class="form-control" min="3" max="10" value="5" step="1"
+                        required>
                     <div class="range-container">
                         <!-- <span>3</span> -->
-                        <input type="hidden" id="periodLengthInput" value="5" min="3" max="10" class="form-control" style="width: 80px;">
+                        <input type="hidden" id="periodLengthInput" value="5" min="3" max="10" class="form-control"
+                            style="width: 80px;">
                         <!-- <span>10</span> -->
                         <span class="range-value" id="periodLengthValue">5</span>
                     </div>
                 </div>
-                
+
                 <button type="button" class="btn" onclick="calculateOvulation()">
                     <i class="fas fa-calculator"></i> Hitung
                 </button>
             </form>
-            
+
             <div class="result-container" id="result">
                 <div class="result-title">Hasil Perhitungan Masa Subur</div>
                 <div class="result-content">
@@ -303,18 +317,18 @@
         const cycleLengthInput = document.getElementById("cycleLength");
         const cycleLengthValue = document.getElementById("cycleLengthValue");
         const cycleLengthNumber = document.getElementById("cycleLengthInput");
-        
+
         const periodLengthInput = document.getElementById("periodLength");
         const periodLengthValue = document.getElementById("periodLengthValue");
         const periodLengthNumber = document.getElementById("periodLengthInput");
 
         // Sync range slider with number input for cycle length
-        cycleLengthInput.addEventListener("input", function() {
+        cycleLengthInput.addEventListener("input", function () {
             cycleLengthValue.textContent = cycleLengthInput.value;
             cycleLengthNumber.value = cycleLengthInput.value;
         });
 
-        cycleLengthNumber.addEventListener("input", function() {
+        cycleLengthNumber.addEventListener("input", function () {
             if (cycleLengthNumber.value >= 21 && cycleLengthNumber.value <= 35) {
                 cycleLengthInput.value = cycleLengthNumber.value;
                 cycleLengthValue.textContent = cycleLengthNumber.value;
@@ -322,12 +336,12 @@
         });
 
         // Sync range slider with number input for period length
-        periodLengthInput.addEventListener("input", function() {
+        periodLengthInput.addEventListener("input", function () {
             periodLengthValue.textContent = periodLengthInput.value;
             periodLengthNumber.value = periodLengthInput.value;
         });
 
-        periodLengthNumber.addEventListener("input", function() {
+        periodLengthNumber.addEventListener("input", function () {
             if (periodLengthNumber.value >= 3 && periodLengthNumber.value <= 10) {
                 periodLengthInput.value = periodLengthNumber.value;
                 periodLengthValue.textContent = periodLengthNumber.value;
@@ -335,19 +349,22 @@
         });
 
         function calculateOvulation() {
-            const lastPeriodDate = new Date(document.getElementById("lastPeriod").value);
-            const cycleLength = parseInt(cycleLengthInput.value);
-            
-            if (!lastPeriodDate || isNaN(lastPeriodDate.getTime())) {
+            const lastPeriodInput = document.getElementById("lastPeriod");
+            const lastPeriodValue = lastPeriodInput.value;
+
+            if (!lastPeriodValue) {
                 alert("Silakan pilih tanggal haid terakhir yang valid.");
                 return;
             }
-            
-            // Calculate ovulation period using your formula
+
+            const lastPeriodDate = new Date(lastPeriodValue);
+            const cycleLength = parseInt(cycleLengthInput.value);
+
+            // hitung masa subur
             const ovulationStart = new Date(lastPeriodDate.getTime() + (cycleLength - 14) * 24 * 60 * 60 * 1000);
             const ovulationEnd = new Date(lastPeriodDate.getTime() + (cycleLength - 10) * 24 * 60 * 60 * 1000);
-            
-            // Format dates to Indonesian format
+
+            // format tanggal Indo
             const formatDate = (date) => {
                 return date.toLocaleDateString('id-ID', {
                     day: '2-digit',
@@ -356,18 +373,23 @@
                 });
             };
 
+            // tampilkan hasil (selalu overwrite hasil lama)
             const resultElement = document.getElementById("resultText");
             resultElement.innerHTML = `
-                <strong>Rekomendasi:</strong><br>
-                - Masa Subur diperkirakan berada antara tanggal <strong>${formatDate(ovulationStart)}</strong> dan <strong>${formatDate(ovulationEnd)}</strong>.<br>
-                - Gunakan informasi ini untuk merencanakan kehamilan atau mencegah kehamilan.
-            `;
-            
+        <strong>Rekomendasi:</strong><br>
+        - Masa Subur diperkirakan berada antara tanggal 
+          <strong>${formatDate(ovulationStart)}</strong> 
+          dan <strong>${formatDate(ovulationEnd)}</strong>.<br>
+        - Gunakan informasi ini untuk merencanakan kehamilan atau mencegah kehamilan.
+    `;
+
             document.getElementById("result").style.display = 'block';
         }
-        
+
+
         // Set default date to today
         document.getElementById("lastPeriod").valueAsDate = new Date();
     </script>
 </body>
+
 </html>
