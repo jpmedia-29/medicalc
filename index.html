@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediCalc</title>
+    <title>Kalkulator Medis</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
+            --primary: #DA1E28;
+            --secondary: #FA4D56;
+            --accent: #f8777d;
             --dark: #1b263b;
             --light: #f8f9fa;
-            --success: #4cc9f0;
-            --danger: #f72585;
-            --warning: #f8961e;
-            --purple: #7209b7;
+            
+            --danger: #FA4D56;
+            --warning: #F1C21B;
+            --purple: #8A3FFC;
         }
 
         * {
@@ -160,14 +160,14 @@
         }
 
         .formula-item:hover {
-            background-color: rgba(67, 97, 238, 0.03);
+            background-color: rgba(15, 98, 254, 0.03);
         }
 
         .formula-icon {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(72, 149, 239, 0.2));
+            background: linear-gradient(135deg, rgba(15, 98, 254, 0.1), rgba(91, 141, 239, 0.2));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -216,7 +216,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: linear-gradient(135deg, var(--success), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 3px;
         }
 
@@ -233,7 +233,7 @@
             border-radius: 12px;
             padding: 1.5rem;
             transition: all 0.3s ease;
-            border-left: 4px solid var(--success);
+            border-left: 4px solid var(--primary);
         }
 
         .health-item:nth-child(2) {
@@ -241,11 +241,11 @@
         }
 
         .health-item:nth-child(3) {
-            border-left-color: var(--warning);
+            border-left-color: var(--accent);
         }
 
         .health-item:nth-child(4) {
-            border-left-color: var(--purple);
+            border-left-color: var(--accent);
         }
 
         .health-item:hover {
@@ -277,7 +277,16 @@
 
         .health-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+            box-shadow: 0 5px 15px rgba(15, 98, 254, 0.3);
+        }
+
+        .card-header{
+            background: linear-gradient(135deg, #FA4D56, #DA1E28);
+        }
+
+        .formula-icon{
+
+            color: var(--accent);
         }
 
         @media (max-width: 768px) {
@@ -324,7 +333,7 @@
             <div class="logo">
                 <i class="fas fa-pills"></i>
             </div>
-            <h1>MediCalc</h1>
+            <h1>Kalkulator Medis</h1>
             <p class="subtitle">Smart Medical Calculator for Better Healthcare</p>
         </header>
 
@@ -350,13 +359,13 @@
             </div>
 
             <div class="calculator-card">
-                <div class="card-header" style="background: linear-gradient(135deg, #f72585, #b5179e);">
-                    <h2>Dosis Bayi (<1 Tahun)</h2>
+                <div class="card-header">
+                    <h2>Dosis Bayi (<1 Tahun) </h2>
                 </div>
                 <ul class="formula-list">
                     <a href="frieds-formula.html">
                         <li class="formula-item">
-                            <div class="formula-icon" style="color: #f72585;">
+                            <div class="formula-icon">
                                 <i class="fas fa-baby"></i>
                             </div>
                             <div class="formula-details">
@@ -370,13 +379,13 @@
             </div>
 
             <div class="calculator-card">
-                <div class="card-header" style="background: linear-gradient(135deg, #4cc9f0, #4895ef);">
+                <div class="card-header">
                     <h2>Dosis Anak 1-8 Tahun</h2>
                 </div>
                 <ul class="formula-list">
                     <a href="young-formula.html">
                         <li class="formula-item">
-                            <div class="formula-icon" style="color: #4cc9f0;">
+                            <div class="formula-icon">
                                 <i class="fas fa-child"></i>
                             </div>
                             <div class="formula-details">
@@ -390,13 +399,13 @@
             </div>
 
             <div class="calculator-card">
-                <div class="card-header" style="background: linear-gradient(135deg, #f8961e, #f3722c);">
+                <div class="card-header">
                     <h2>Dosis Anak 8-12 Tahun</h2>
                 </div>
                 <ul class="formula-list">
                     <a href="cowling-formula.html">
                         <li class="formula-item">
-                            <div class="formula-icon" style="color: #f8961e;">
+                            <div class="formula-icon">
                                 <i class="fas fa-user-alt"></i>
                             </div>
                             <div class="formula-details">
@@ -410,13 +419,13 @@
             </div>
 
             <div class="calculator-card">
-                <div class="card-header" style="background: linear-gradient(135deg, #7209b7, #560bad);">
+                <div class="card-header">
                     <h2>Dosis Anak >8 Tahun</h2>
                 </div>
                 <ul class="formula-list">
                     <a href="dilling-formula.html">
                         <li class="formula-item">
-                            <div class="formula-icon" style="color: #7209b7;">
+                            <div class="formula-icon">
                                 <i class="fas fa-user"></i>
                             </div>
                             <div class="formula-details">
@@ -431,7 +440,7 @@
         </div>
 
         <div class="health-section">
-            <h2>Kalkulator Kesehatan</h2>
+            <h2>Kalkulator Kesehatan Umum</h2>
             <div class="health-grid">
                 <div class="health-item">
                     <h3 class="health-title">Perhitungan BMI</h3>
