@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Medis - Klirens Kreatinin</title>
+    <link rel="icon" type="image/png" href="https://rmedokter.online/assets/images/logo-red.png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* :root {
@@ -16,43 +19,50 @@
             --danger: #f72585;
         } */
 
-          :root {
+        :root {
             --primary: #DA1E28;
             --secondary: #FA4D56;
             --accent: #f8777d;
             --dark: #1b263b;
             --light: #f8f9fa;
-            
+
             --danger: #FA4D56;
             --warning: #F1C21B;
             --purple: #8A3FFC;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
         }
-        
+
         body {
             background-color: #fff9f2;
             color: var(--dark);
             line-height: 1.6;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
             animation: fadeIn 0.6s ease-out;
         }
-        
+
         .breadcrumb {
             display: flex;
             align-items: center;
@@ -61,29 +71,29 @@
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
-        
+
         .breadcrumb a {
             color: var(--primary);
             text-decoration: none;
             transition: all 0.2s ease;
         }
-        
+
         .breadcrumb a:hover {
             color: var(--secondary);
             text-decoration: underline;
         }
-        
+
         .breadcrumb .separator {
             color: #adb5bd;
         }
-        
+
         .page-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 2rem;
         }
-        
+
         .page-title {
             font-size: 1.8rem;
             font-weight: 700;
@@ -92,12 +102,12 @@
             align-items: center;
             gap: 1rem;
         }
-        
+
         .page-title i {
             color: var(--primary);
             font-size: 1.5rem;
         }
-        
+
         .calculator-card {
             background: white;
             border-radius: 16px;
@@ -107,7 +117,7 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 2rem;
         }
-        
+
         .card-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -117,7 +127,7 @@
             position: relative;
             padding-bottom: 1rem;
         }
-        
+
         .card-title::after {
             content: '';
             position: absolute;
@@ -129,18 +139,18 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 3px;
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--dark);
         }
-        
+
         .form-control {
             width: 100%;
             padding: 0.8rem 1rem;
@@ -149,23 +159,23 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
-        
+
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(248, 150, 30, 0.1);
         }
-        
+
         .gender-group {
             display: flex;
             gap: 1rem;
             margin-top: 0.5rem;
         }
-        
+
         .gender-option {
             flex: 1;
         }
-        
+
         .gender-btn {
             display: block;
             width: 100%;
@@ -177,13 +187,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .gender-btn.active {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border-color: transparent;
         }
-        
+
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -197,16 +207,16 @@
             transition: all 0.3s ease;
             width: 100%;
         }
-        
+
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(248, 150, 30, 0.3);
         }
-        
+
         .btn:active {
             transform: translateY(0);
         }
-        
+
         .result-container {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -214,19 +224,19 @@
             border-radius: 8px;
             display: none;
         }
-        
+
         .result-title {
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
-        
+
         .result-value {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--dark);
         }
-        
+
         .result-interpretation {
             margin-top: 1rem;
             padding: 1rem;
@@ -234,18 +244,18 @@
             border-radius: 8px;
             border-left: 4px solid var(--primary);
         }
-        
+
         .interpretation-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--dark);
         }
-        
+
         .interpretation-text {
             font-size: 0.9rem;
             color: #6c757d;
         }
-        
+
         .formula-info {
             margin-top: 2rem;
             padding: 1rem;
@@ -253,48 +263,50 @@
             border-radius: 8px;
             border-left: 4px solid var(--primary);
         }
-        
+
         .formula-info-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--dark);
         }
-        
+
         .formula-info-text {
             font-size: 0.9rem;
             color: #6c757d;
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 padding: 1.5rem;
             }
-            
+
             .page-title {
                 font-size: 1.5rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .container {
                 padding: 1rem;
             }
-            
+
             .calculator-card {
                 padding: 1.5rem;
             }
-            
+
             .page-title {
                 font-size: 1.3rem;
             }
-            
+
             .gender-group {
                 flex-direction: column;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <div class="breadcrumb">
@@ -302,33 +314,36 @@
             <span class="separator">|</span>
             <span>klirens kreatinin (CrCl)</span>
         </div>
-        
+
         <div class="page-header">
             <h1 class="page-title">
                 <i class="fas fa-kidneys"></i>
                 <span>klirens kreatinin (CrCl)</span>
             </h1>
         </div>
-        
+
         <div class="calculator-card">
             <h2 class="card-title">Kalkulator Klirens Kreatinin</h2>
-            
+
             <form id="creatinineFormula">
                 <div class="form-group">
                     <label for="age" class="form-label">Umur (tahun):</label>
-                    <input type="number" id="age" class="form-control" placeholder="Masukkan umur" min="0" max="120" required>
+                    <input type="number" id="age" class="form-control" placeholder="Masukkan umur" min="0" max="120"
+                        required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="weight" class="form-label">Berat Badan (kg):</label>
-                    <input type="number" id="weight" class="form-control" placeholder="Masukkan berat badan" step="0.1" min="0" required>
+                    <input type="number" id="weight" class="form-control" placeholder="Masukkan berat badan" step="0.1"
+                        min="0" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="creatinine" class="form-label">Kreatinin Serum (mg/dL):</label>
-                    <input type="number" id="creatinine" class="form-control" placeholder="Masukkan nilai kreatinin" step="0.01" min="0.1" required>
+                    <input type="number" id="creatinine" class="form-control" placeholder="Masukkan nilai kreatinin"
+                        step="0.01" min="0.1" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label">Jenis Kelamin:</label>
                     <div class="gender-group">
@@ -341,16 +356,16 @@
                     </div>
                     <input type="hidden" id="gender" value="pria">
                 </div>
-                
+
                 <button type="submit" class="btn">
                     <i class="fas fa-calculator"></i> Hitung
                 </button>
             </form>
-            
+
             <div class="result-container" id="result">
                 <div class="result-title">Hasil Klirens Kreatinin:</div>
                 <div class="result-value" id="crclValue">0 mL/min</div>
-                
+
                 <div class="result-interpretation">
                     <div class="interpretation-title">Interpretasi:</div>
                     <div class="interpretation-text" id="interpretationText">
@@ -358,7 +373,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="formula-info">
                 <div class="formula-info-title">Rumus Cockcroft-Gault</div>
                 <div class="formula-info-text">
@@ -374,31 +389,31 @@
         // Gender selection
         const genderBtns = document.querySelectorAll('.gender-btn');
         const genderInput = document.getElementById('gender');
-        
+
         genderBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 genderBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 genderInput.value = this.dataset.gender;
             });
         });
-        
+
         // Creatinine clearance calculation
-        document.getElementById('creatinineFormula').addEventListener('submit', function(e) {
+        document.getElementById('creatinineFormula').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const umur = parseInt(document.getElementById('age').value);
             const beratBadan = parseFloat(document.getElementById('weight').value);
             const kreatinin = parseFloat(document.getElementById('creatinine').value);
             const jenisKelamin = document.getElementById('gender').value;
-            
+
             if (umur && beratBadan && kreatinin) {
                 // Perhitungan klirens kreatinin (CrCl) berdasarkan rumus Cockcroft-Gault
                 var crclHasil = ((140 - umur) * beratBadan) / (72 * kreatinin);
-                
+
                 var hasilPesan = "Klirens Kreatinin (CrCl) Anda adalah " + crclHasil.toFixed(2) + " mL/min.";
                 var interpretasi = "";
-                
+
                 if (jenisKelamin === "wanita") {
                     if (crclHasil > 90) {
                         interpretasi = "Normal";
@@ -424,7 +439,7 @@
                         interpretasi = "Penyakit Ginjal Stadium Akhir";
                     }
                 }
-                
+
                 document.getElementById('crclValue').textContent = crclHasil.toFixed(2) + ' mL/min';
                 document.getElementById('interpretationText').textContent = interpretasi;
                 document.getElementById('result').style.display = 'block';
@@ -432,4 +447,5 @@
         });
     </script>
 </body>
+
 </html>

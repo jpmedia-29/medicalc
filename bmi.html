@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Medis - Kalkulator BMI</title>
+    <link rel="icon" type="image/png" href="https://rmedokter.online/assets/images/logo-red.png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* :root {
@@ -16,43 +19,50 @@
             --warning: #f8961e;
         } */
 
-          :root {
+        :root {
             --primary: #DA1E28;
             --secondary: #FA4D56;
             --accent: #f8777d;
             --dark: #1b263b;
             --light: #f8f9fa;
-            
+
             --danger: #FA4D56;
             --warning: #F1C21B;
             --purple: #8A3FFC;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
         }
-        
+
         body {
             background-color: #f5fbff;
             color: var(--dark);
             line-height: 1.6;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
             animation: fadeIn 0.6s ease-out;
         }
-        
+
         .breadcrumb {
             display: flex;
             align-items: center;
@@ -61,29 +71,29 @@
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
-        
+
         .breadcrumb a {
             color: var(--primary);
             text-decoration: none;
             transition: all 0.2s ease;
         }
-        
+
         .breadcrumb a:hover {
             color: var(--secondary);
             text-decoration: underline;
         }
-        
+
         .breadcrumb .separator {
             color: #adb5bd;
         }
-        
+
         .page-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 2rem;
         }
-        
+
         .page-title {
             font-size: 1.8rem;
             font-weight: 700;
@@ -92,12 +102,12 @@
             align-items: center;
             gap: 1rem;
         }
-        
+
         .page-title i {
             color: var(--primary);
             font-size: 1.5rem;
         }
-        
+
         .calculator-card {
             background: white;
             border-radius: 16px;
@@ -107,7 +117,7 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 2rem;
         }
-        
+
         .card-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -117,7 +127,7 @@
             position: relative;
             padding-bottom: 1rem;
         }
-        
+
         .card-title::after {
             content: '';
             position: absolute;
@@ -129,18 +139,18 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 3px;
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--dark);
         }
-        
+
         .form-control {
             width: 100%;
             padding: 0.8rem 1rem;
@@ -149,23 +159,23 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
-        
+
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.1);
         }
-        
+
         .gender-group {
             display: flex;
             gap: 1rem;
             margin-top: 0.5rem;
         }
-        
+
         .gender-option {
             flex: 1;
         }
-        
+
         .gender-btn {
             display: block;
             width: 100%;
@@ -177,13 +187,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .gender-btn.active {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border-color: transparent;
         }
-        
+
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -197,16 +207,16 @@
             transition: all 0.3s ease;
             width: 100%;
         }
-        
+
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
         }
-        
+
         .btn:active {
             transform: translateY(0);
         }
-        
+
         .result-container {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -214,24 +224,24 @@
             border-radius: 8px;
             display: none;
         }
-        
+
         .result-title {
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
-        
+
         .result-value {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--dark);
         }
-        
+
         .result-category {
             margin-top: 0.5rem;
             font-size: 1rem;
         }
-        
+
         .formula-info {
             margin-top: 2rem;
             padding: 1rem;
@@ -239,48 +249,50 @@
             border-radius: 8px;
             border-left: 4px solid var(--primary);
         }
-        
+
         .formula-info-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--dark);
         }
-        
+
         .formula-info-text {
             font-size: 0.9rem;
             color: #6c757d;
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 padding: 1.5rem;
             }
-            
+
             .page-title {
                 font-size: 1.5rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .container {
                 padding: 1rem;
             }
-            
+
             .calculator-card {
                 padding: 1.5rem;
             }
-            
+
             .page-title {
                 font-size: 1.3rem;
             }
-            
+
             .gender-group {
                 flex-direction: column;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <div class="breadcrumb">
@@ -288,33 +300,35 @@
             <span class="separator">/</span>
             <span>Kalkulator BMI</span>
         </div>
-        
+
         <div class="page-header">
             <h1 class="page-title">
                 <i class="fas fa-weight"></i>
                 <span>Kalkulator BMI</span>
             </h1>
         </div>
-        
+
         <div class="calculator-card">
             <h2 class="card-title">Hitung Indeks Massa Tubuh Anda</h2>
-            
+
             <form id="bmiFormula">
                 <div class="form-group">
                     <label for="weight" class="form-label">Berat Badan (kg)</label>
-                    <input type="number" id="weight" class="form-control" placeholder="Masukkan berat badan" step="0.1" min="0" required>
+                    <input type="number" id="weight" class="form-control" placeholder="Masukkan berat badan" step="0.1"
+                        min="0" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="height" class="form-label">Tinggi Badan (cm)</label>
-                    <input type="number" id="height" class="form-control" placeholder="Masukkan tinggi badan" min="0" required>
+                    <input type="number" id="height" class="form-control" placeholder="Masukkan tinggi badan" min="0"
+                        required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="age" class="form-label">Usia (tahun)</label>
                     <input type="number" id="age" class="form-control" placeholder="Masukkan usia" min="0" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label">Jenis Kelamin</label>
                     <div class="gender-group">
@@ -327,23 +341,25 @@
                     </div>
                     <input type="hidden" id="gender" value="male">
                 </div>
-                
+
                 <button type="submit" class="btn">
                     <i class="fas fa-calculator"></i> Hitung BMI
                 </button>
             </form>
-            
+
             <div class="result-container" id="result">
                 <div class="result-title">Hasil BMI:</div>
                 <div class="result-value" id="bmiValue">0</div>
                 <div class="result-category" id="bmiCategory"></div>
             </div>
-            
+
             <div class="formula-info">
                 <div class="formula-info-title">Tentang BMI</div>
                 <div class="formula-info-text">
-                    Body Mass Index (BMI) adalah ukuran yang menggunakan tinggi dan berat badan untuk menghitung apakah berat badan Anda sehat. 
-                    Rumus: Berat Badan (kg) / (Tinggi Badan (m) × Tinggi Badan (m)). BMI membantu mengkategorikan status berat badan Anda.
+                    Body Mass Index (BMI) adalah ukuran yang menggunakan tinggi dan berat badan untuk menghitung apakah
+                    berat badan Anda sehat.
+                    Rumus: Berat Badan (kg) / (Tinggi Badan (m) × Tinggi Badan (m)). BMI membantu mengkategorikan status
+                    berat badan Anda.
                 </div>
             </div>
         </div>
@@ -353,32 +369,32 @@
         // Gender selection
         const genderBtns = document.querySelectorAll('.gender-btn');
         const genderInput = document.getElementById('gender');
-        
+
         genderBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 genderBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 genderInput.value = this.dataset.gender;
             });
         });
-        
+
         // BMI calculation
-        document.getElementById('bmiFormula').addEventListener('submit', function(e) {
+        document.getElementById('bmiFormula').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const weight = parseFloat(document.getElementById('weight').value);
             const height = parseFloat(document.getElementById('height').value) / 100; // convert to meters
             const age = parseInt(document.getElementById('age').value);
             const gender = document.getElementById('gender').value;
-            
+
             if (weight && height && age) {
                 const bmi = weight / (height * height);
                 document.getElementById('bmiValue').textContent = bmi.toFixed(2);
-                
+
                 // Determine BMI category
                 let category = '';
                 let categoryClass = '';
-                
+
                 if (bmi < 18.5) {
                     category = 'Kekurangan berat badan';
                     categoryClass = 'underweight';
@@ -392,7 +408,7 @@
                     category = 'Obesitas';
                     categoryClass = 'obese';
                 }
-                
+
                 document.getElementById('bmiCategory').textContent = category;
                 document.getElementById('bmiCategory').className = 'result-category ' + categoryClass;
                 document.getElementById('result').style.display = 'block';
@@ -400,4 +416,5 @@
         });
     </script>
 </body>
+
 </html>

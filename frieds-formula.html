@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Medis  - Fried's Formula</title>
+    <title>Kalkulator Medis - Fried's Formula</title>
+    <link rel="icon" type="image/png" href="https://rmedokter.online/assets/images/logo-red.png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* :root {
@@ -16,45 +19,52 @@
             --warning: #f8961e;
         } */
 
-          :root {
+        :root {
             --primary: #DA1E28;
             --secondary: #FA4D56;
             --accent: #f8777d;
             --dark: #1b263b;
             --light: #f8f9fa;
-            
+
             --danger: #FA4D56;
             --warning: #F1C21B;
             --purple: #8A3FFC;
         }
 
 
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
         }
-        
+
         body {
             background-color: #fff5f9;
             color: var(--dark);
             line-height: 1.6;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
             animation: fadeIn 0.6s ease-out;
         }
-        
+
         .breadcrumb {
             display: flex;
             align-items: center;
@@ -63,29 +73,29 @@
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
-        
+
         .breadcrumb a {
             color: var(--primary);
             text-decoration: none;
             transition: all 0.2s ease;
         }
-        
+
         .breadcrumb a:hover {
             color: var(--secondary);
             text-decoration: underline;
         }
-        
+
         .breadcrumb .separator {
             color: #adb5bd;
         }
-        
+
         .page-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 2rem;
         }
-        
+
         .page-title {
             font-size: 1.8rem;
             font-weight: 700;
@@ -94,12 +104,12 @@
             align-items: center;
             gap: 1rem;
         }
-        
+
         .page-title i {
             color: var(--primary);
             font-size: 1.5rem;
         }
-        
+
         .calculator-card {
             background: white;
             border-radius: 16px;
@@ -109,7 +119,7 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 2rem;
         }
-        
+
         .card-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -119,7 +129,7 @@
             position: relative;
             padding-bottom: 1rem;
         }
-        
+
         .card-title::after {
             content: '';
             position: absolute;
@@ -131,18 +141,18 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 3px;
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--dark);
         }
-        
+
         .form-control {
             width: 100%;
             padding: 0.8rem 1rem;
@@ -151,13 +161,13 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
-        
+
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(247, 37, 133, 0.1);
         }
-        
+
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -171,16 +181,16 @@
             transition: all 0.3s ease;
             width: 100%;
         }
-        
+
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
         }
-        
+
         .btn:active {
             transform: translateY(0);
         }
-        
+
         .result-container {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -188,19 +198,19 @@
             border-radius: 8px;
             display: none;
         }
-        
+
         .result-title {
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
-        
+
         .result-value {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--dark);
         }
-        
+
         .formula-info {
             margin-top: 2rem;
             padding: 1rem;
@@ -208,44 +218,46 @@
             border-radius: 8px;
             border-left: 4px solid var(--primary);
         }
-        
+
         .formula-info-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--dark);
         }
-        
+
         .formula-info-text {
             font-size: 0.9rem;
             color: #6c757d;
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 padding: 1.5rem;
             }
-            
+
             .page-title {
                 font-size: 1.5rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .container {
                 padding: 1rem;
             }
-            
+
             .calculator-card {
                 padding: 1.5rem;
             }
-            
+
             .page-title {
                 font-size: 1.3rem;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <div class="breadcrumb">
@@ -253,42 +265,44 @@
             <span class="separator">/</span>
             <span>Fried's Formula</span>
         </div>
-        
+
         <div class="page-header">
             <h1 class="page-title">
                 <i class="fas fa-baby"></i>
                 <span>Fried's Formula</span>
             </h1>
         </div>
-        
+
         <div class="calculator-card">
             <h2 class="card-title">Kalkulator Dosis Obat Bayi</h2>
-            
+
             <form id="friedFormula">
                 <div class="form-group">
                     <label for="age" class="form-label">Usia Bayi (bulan, dibawah 12 bulan)</label>
-                    <input type="number" id="age" class="form-control" placeholder="Masukkan usia bayi dalam bulan" min="0" max="11" required>
+                    <input type="number" id="age" class="form-control" placeholder="Masukkan usia bayi dalam bulan"
+                        min="0" max="11" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="adultDose" class="form-label">Dosis Dewasa (mg)</label>
-                    <input type="number" id="adultDose" class="form-control" placeholder="Masukkan dosis dewasa" min="0" required>
+                    <input type="number" id="adultDose" class="form-control" placeholder="Masukkan dosis dewasa" min="0"
+                        required>
                 </div>
-                
+
                 <button type="submit" class="btn">
                     <i class="fas fa-calculator"></i> Hitung
                 </button>
             </form>
-            
+
             <div class="result-container" id="result">
                 <div class="result-title">Dosis Bayi:</div>
                 <div class="result-value" id="infantDose">0 mg</div>
             </div>
-            
+
             <div class="formula-info">
                 <div class="formula-info-title">Tentang Fried's Formula</div>
                 <div class="formula-info-text">
-                    Fried's Formula digunakan untuk menghitung dosis obat bayi di bawah 1 tahun berdasarkan usia. 
+                    Fried's Formula digunakan untuk menghitung dosis obat bayi di bawah 1 tahun berdasarkan usia.
                     Selalu berkonsultasi dengan dokter dan apoteker terkait hasil perhitungan dosis ini.
                 </div>
             </div>
@@ -296,12 +310,12 @@
     </div>
 
     <script>
-        document.getElementById('friedFormula').addEventListener('submit', function(e) {
+        document.getElementById('friedFormula').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const age = parseInt(document.getElementById('age').value);
             const adultDose = parseFloat(document.getElementById('adultDose').value);
-            
+
             if (age && adultDose) {
                 const infantDose = (age / 150) * adultDose;
                 document.getElementById('infantDose').textContent = infantDose.toFixed(2) + ' mg';
@@ -310,4 +324,5 @@
         });
     </script>
 </body>
+
 </html>

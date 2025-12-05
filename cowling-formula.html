@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Medis  - Cowling Formula</title>
+    <title>Kalkulator Medis - Cowling Formula</title>
+    <link rel="icon" type="image/png" href="https://rmedokter.online/assets/images/logo-red.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* :root {
@@ -17,13 +18,13 @@
             --danger: #f72585;
         } */
 
-          :root {
+        :root {
             --primary: #DA1E28;
             --secondary: #FA4D56;
             --accent: #f8777d;
             --dark: #1b263b;
             --light: #f8f9fa;
-            
+
             --danger: #FA4D56;
             --warning: #F1C21B;
             --purple: #8A3FFC;
@@ -313,7 +314,7 @@
             const adultDose = parseFloat(document.getElementById('adultDose').value);
 
             if (age && adultDose) {
-                const childDose = ((age + 1)/20) * adultDose;
+                const childDose = ((age + 1) / 20) * adultDose;
                 document.getElementById('childDose').textContent = childDose.toFixed(2) + ' mg';
                 document.getElementById('result').style.display = 'block';
             }
